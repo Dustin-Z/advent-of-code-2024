@@ -1,0 +1,1 @@
+console.log(Object.entries((await Bun.file('input.txt').text()).matchAll(/.+\b(\d+)/g).reduce((x,[a,b])=>(x[-parseInt(a)]=x[b]=++x[b]||1)&&x,{})).reduce((s,[k],_,x)=>k<0&&s-k*Object.fromEntries(x)[-k]||s,0))
